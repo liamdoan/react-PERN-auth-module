@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    lasLogin: {
+    lastLogin: {
         type: Date,
         default: Date.now
     },
