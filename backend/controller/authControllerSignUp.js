@@ -18,14 +18,11 @@ module.exports.signUp = async (req, res) => {
             })
         };
 
-        const hashPassword = await bcryptjs.hash(password, 10);
-        const verificationToken = generateVerificationToken();
-
         const user = new userModel({
             email,
-            password: hashPassword,
+            password: await bcryptjs.hash(password, 10), //hashPassword
             name,
-            verificationToken: verificationToken,
+            verificationToken: generateVerificationToken(), //verification code
             verificationTokenExpiresAt: Date.now() + 24*60*60*1000
         });
         
