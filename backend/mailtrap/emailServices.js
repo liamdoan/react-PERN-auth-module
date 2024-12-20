@@ -21,6 +21,8 @@ module.exports.sendVerificationEmail = async (email, verificationToken) => {
     }
 }
 
+
+// call this in verify email controller
 module.exports.sendWelcomeEmail = async (email, userName) => {
     const recipientEmail =[{email}];
 
