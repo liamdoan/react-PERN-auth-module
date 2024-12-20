@@ -1,4 +1,4 @@
-const { VERIFICATION_EMAIL_TEMPLATE } = require("./emailTemplates");
+const { VERIFICATION_EMAIL_TEMPLATE, PASSWORD_RESET_REQUEST_TEMPLATE } = require("./emailTemplates");
 const { sender, mailtrapClient } = require("./mailTrapConfig");
 
 // call this in Signup controller
@@ -40,5 +40,24 @@ module.exports.sendWelcomeEmail = async (email, userName) => {
         console.log("Welcome email sent!", response);
     } catch (error) {
         throw new Error("something wrong when sending welcome email", error);
+    }
+}
+
+// call this in reset password controller
+module.exports.sendPasswordResetEmail = async (email, resetUrl) => {
+    const recipientEmail = [{email}];
+
+    try {
+        const response = await mailtrapClient.send({
+            from: sender,
+            to: recipientEmail,
+            subject: "Reset your password",
+            html: PASSWORD_RESET_REQUEST_TEMPLATE.replace("{resetURL}", resetUrl),
+            category: "Reset password"
+        });
+
+        console.log("Reset password email sent!", response);
+    } catch (error) {
+        throw new Error("something wrong when sending reset password email", error);
     }
 }
