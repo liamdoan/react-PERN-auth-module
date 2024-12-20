@@ -4,11 +4,11 @@ const {signUp} = require("../controller/authControllerSignUp");
 const {logIn} = require("../controller/authControllerLogin");
 const {logOut} = require("../controller/authControllerLogout");
 const { verifyEmail } = require('../controller/authControllerVerifyEmail');
-const { resetPassword } = require('../controller/authControllerResetPassword');
+const { forgotPassword } = require('../controller/authControllerForgotPassword');
 
 router.post("/signup", signUp);
 router.post("/verify-email", verifyEmail);
-router.post("/reset-password", resetPassword);
+router.post("/forgot-password", forgotPassword);
 router.post("/login", logIn);
 router.post("/logout", logOut);
 
