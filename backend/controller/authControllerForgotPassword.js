@@ -21,7 +21,7 @@ module.exports.forgotPassword = async (req, res) => {
 
         await user.save();
 
-        await sendPasswordResetEmail(user.email, `${process.env.DEVELOPMENT_URL}/reset-password/${resetToken})`);
+        await sendPasswordResetEmail(user.email, `${process.env.DEVELOPMENT_URL}/reset-password/${resetToken}`);
 
         res.status(200).json({
             message: "Reset password email sent ok!"
