@@ -1,5 +1,5 @@
 const userModel = require("../models/userModel");
-const bcryptjs = require('bcryptjs');
+const { generateHashPassword } = require("../utils/generateHashPassword");
 const { generateVerificationToken } = require("../utils/generateVerificationToken");
 const { generateTokenAndSetCookies } = require("../utils/generateTokenAndSetCookies");
 const { sendVerificationEmail } = require("../mailtrap/emailServices");
@@ -21,7 +21,7 @@ module.exports.signUp = async (req, res) => {
 
         const user = new userModel({
             email,
-            password: await bcryptjs.hash(password, 10), //hashPassword
+            password: await generateHashPassword(password), //hashPassword
             name,
             verificationToken: generateVerificationToken(), //verification code
             verificationTokenExpiresAt: Date.now() + 24*60*60*1000
