@@ -29,13 +29,28 @@ const PasswordStrengthIndicator: React.FC<PasswordStrengthIndicatorProps> = ({pa
     ];
 
     const metConditions = conditions.map((condition) => condition.test);
-    console.log("met condition", metConditions);
     const strength = metConditions.filter(Boolean).length; //filter away all falsey values
-    console.log("strength: ", strength)
 
     return (
-        <div>
-            password strength indicator component
+        <div className="password-strength-indicator">
+            <div className="strength-bars">
+                {Array.from({length: conditions.length}).map((_, index) => (
+                    <div
+                        key={index}
+                        className={`strength-bar ${index < strength ? "active" : ""}`}
+                    />
+                ))}
+            </div>
+            <ul className="conditions-list">
+                {conditions.map((condition, index) => (
+                    <li
+                        key={condition.name}
+                        className={`condition ${metConditions[index] ? "passed" : "not-passed"}`}
+                    >
+                        {condition.name}
+                    </li>
+                ))}
+            </ul>
         </div>
     )
 }
