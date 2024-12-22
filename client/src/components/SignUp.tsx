@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import Input from './form-components/Input';
-import './SignUp.css'
-import SubmitButton from './form-components/SubmitButton';
 import { Link } from 'react-router-dom';
+import './SignUp.css'
+import Input from './form-components/Input';
+import SubmitButton from './form-components/SubmitButton';
+import PasswordStrengthIndicator from './form-components/PasswordStrengthIndicator';
 
 const SignUp = () => {
     const [name, setName] = useState<string>("");
@@ -36,9 +37,13 @@ const SignUp = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
+                    <PasswordStrengthIndicator password={password}/>
                     <SubmitButton title="Sign Up"/>
                     <div className='notice-already-have-account'>
-                        <span className='notice-span'>Already have an account? </span>
+                        <span className='notice-span'>
+                            Already have an account?
+                            <span>&nbsp;</span>
+                        </span>
                         <Link className='login-direct' to={"/login"}>Please login.</Link>
                     </div>
                 </form>
