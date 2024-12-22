@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom'
-import SignUp from './components/SignUp'
-import Login from './components/Login'
-import Home from './components/Home'
-import EmailVerificationCode from './components/EmailVerificationCode'
+import SignUp from './pages/SignUp'
+import Login from './pages/Login'
+import Home from './pages/Home'
+import EmailVerificationCode from './pages/EmailVerificationCode'
 
 function App() {
     return (
