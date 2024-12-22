@@ -3,6 +3,8 @@ button {
     width: 90%;
     align-self: center;
     padding:10px;
+    border: none;
+    outline: none;
     border-radius: 5px;
     cursor: pointer;
     background-color: rgb(223, 182, 0);
