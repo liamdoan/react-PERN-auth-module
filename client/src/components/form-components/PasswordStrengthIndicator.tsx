@@ -31,8 +31,12 @@ const PasswordStrengthIndicator: React.FC<PasswordStrengthIndicatorProps> = ({pa
     const metConditions = conditions.map((condition) => condition.test);
     const strength = metConditions.filter(Boolean).length; //filter away all falsey values
 
+    const strengthLevels = ["Weak", "Fair", "Good", "Strong", "Very Strong"];
+    const strengthLevel = strengthLevels[strength - 1] || "";
+
     return (
         <div className="password-strength-indicator">
+            <div className="strength-label">{strengthLevel}</div>
             <div className="strength-bars">
                 {Array.from({length: conditions.length}).map((_, index) => (
                     <div
