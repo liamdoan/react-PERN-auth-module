@@ -15,16 +15,15 @@ const SignUp = () => {
     const [password, setPassword] = useState<string>("");
 
     const [loading, setLoading] = useState<Boolean>(false);
-    const [error, setError] = useState<Boolean>(false);
+    const [messageSuccess, setMessageSuccess] = useState<string>("");
+    const [messageFailed, setMessageFailed] = useState<string>("");
 
     const handleSignup = async (e: any) => {
         e.preventDefault();
 
         setLoading(true);
-        setError(false);
 
         if (!name || !email || !password) {
-            setError(true);
             return;
         };
 
@@ -33,17 +32,20 @@ const SignUp = () => {
                 name, email, password
             });
 
-            console.log(response.data);
             setLoading(false);
+
+            setMessageSuccess(response.data.message);
+            setTimeout(() => setMessageSuccess(""), 3000);
 
             setName("");
             setEmail("");
             setPassword("");
-        } catch (error) {
-            setError(true);
-            console.error(error);
+        } catch (error: any) {
+            setLoading(false);
+            setMessageFailed(error.response.data.message);
+            setTimeout(() => setMessageFailed(""), 3000);
         }
-    }
+    };
 
     return (
         <div className="signup-wrapper">
@@ -71,7 +73,8 @@ const SignUp = () => {
                     <PasswordStrengthIndicator password={password}/>
                     <SubmitButton title="Sign Up" disabled={!name || !email || !password}/>
                     { loading && <LoadingBar /> }
-                    { error && <span className='error-message'>Signup failed! Please do it again.</span> }
+                    { messageSuccess && <span className='message-success'>{messageSuccess}</span> }
+                    { messageFailed && <span className='message-failed'>{messageFailed}</span> }
                     <div className='notice-already-have-account'>
                         <span className='notice-span'>
                             Already have an account?
