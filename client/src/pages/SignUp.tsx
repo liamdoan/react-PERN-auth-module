@@ -13,7 +13,6 @@ const SignUp = () => {
     const [name, setName] = useState<string>("");
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-
     const [loading, setLoading] = useState<Boolean>(false);
     const [messageSuccess, setMessageSuccess] = useState<string>("");
     const [messageFailed, setMessageFailed] = useState<string>("");
@@ -28,7 +27,6 @@ const SignUp = () => {
 
     const handleSignup = async (e: any) => {
         e.preventDefault();
-
         setLoading(true);
 
         if (!name || !email || !password) {
@@ -41,10 +39,8 @@ const SignUp = () => {
             });
 
             setLoading(false);
-
             setMessageSuccess(response.data.message);
             setTimeout(() => setMessageSuccess(""), 3000);
-
             resetForm();
 
             navigate("/email-verification");
