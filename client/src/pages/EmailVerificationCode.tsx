@@ -2,14 +2,21 @@ import React, { useRef, useState } from 'react'
 import "./EmailVerificationCode.css"
 import { useNavigate } from 'react-router-dom';
 import SubmitButton from '../components/form-components/SubmitButton';
+import axios from 'axios';
+import LoadingBar from '../components/loading/LoadingBar';
+
+const BASE_URL = process.env.BASE_URL;
 
 const EmailVerificationCode = () => {
-    const [failMessage, setFailMessage] = useState(false);
     const [code, setCode] = useState(["", "", "", "", "", ""]); 
     const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
     const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
     const [userTypedCode, setUserTypedCode] = useState<string>("");
+    const [loading, setLoading] = useState<Boolean>(false);
+    const [messageSuccess, setMessageSuccess] = useState<string>("");
+    const [messageFailed, setMessageFailed] = useState<string>("");
+
     const navigate = useNavigate();
 
     const handleInputChange = (value: string, index: number) => {
@@ -20,10 +27,6 @@ const EmailVerificationCode = () => {
         setCode(newCode);
     
         const isAllInputsFilled = newCode.every((digit) => digit !== "");
-
-        if (failMessage && value!== '') {
-            setFailMessage(false);
-        };
 
         if (isAllInputsFilled) {
             setIsButtonDisabled(false);
@@ -39,14 +42,29 @@ const EmailVerificationCode = () => {
         }
     };
 
-    const handleSubmitCode = (e: any) => {
+    const handleSubmitCode = async (e: any) => {
         e.preventDefault();
 
-        console.log("SUBMIT");
-        console.log("submitted code is:", userTypedCode)
+        setLoading(true);
         setCode(["", "", "", "", "", ""]);
         setIsButtonDisabled(true);
-    }
+
+        try {
+            const response = await axios.post(`${BASE_URL}/verify-email`, {
+                verificationCode: userTypedCode
+            });
+
+            setLoading(false);
+            setMessageSuccess(response.data.message);
+            setTimeout(() => setMessageSuccess(""), 3000);
+
+            navigate('/');
+        } catch (error: any) {
+            setLoading(false);
+            setMessageFailed(error.response.data.message);
+            setTimeout(() => setMessageFailed(""), 3000);
+        }
+    };
 
     return (
         <div className="container">
@@ -68,10 +86,10 @@ const EmailVerificationCode = () => {
                         ))}
                     </div>
                     <SubmitButton title="Send code" disabled={isButtonDisabled}/>
+                    { loading && <LoadingBar /> }
+                    { messageSuccess && <span className='message-success'>{messageSuccess}</span> }
+                    { messageFailed && <span className='message-failed'>{messageFailed}</span> }
                 </form>
-                {failMessage && (
-                    <p className="fail-message">Incorrect code. Please provide the correct code or contact us.</p>
-                )}
             </div>
             <p className="footer">
                 Should any issue arise, please contact us!
