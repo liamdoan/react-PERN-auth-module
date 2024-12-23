@@ -58,7 +58,7 @@ const EmailVerificationCode = () => {
             setMessageSuccess(response.data.message);
             setTimeout(() => setMessageSuccess(""), 3000);
 
-            navigate('/');
+            navigate('/login');
         } catch (error: any) {
             setLoading(false);
             setMessageFailed(error.response.data.message);
