@@ -18,6 +18,12 @@ const SignUp = () => {
     const [messageSuccess, setMessageSuccess] = useState<string>("");
     const [messageFailed, setMessageFailed] = useState<string>("");
 
+    const resetForm = () => {
+        setName("");
+        setEmail("");
+        setPassword("");
+    };
+
     const handleSignup = async (e: any) => {
         e.preventDefault();
 
@@ -37,9 +43,7 @@ const SignUp = () => {
             setMessageSuccess(response.data.message);
             setTimeout(() => setMessageSuccess(""), 3000);
 
-            setName("");
-            setEmail("");
-            setPassword("");
+            resetForm();
         } catch (error: any) {
             setLoading(false);
             setMessageFailed(error.response.data.message);
