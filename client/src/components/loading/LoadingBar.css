@@ -1,0 +1,28 @@
+@keyframes loading {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+.loading-bar-container {
+    position: relative;
+    margin: 8px 0;
+    width: 90%;
+    height: 6px;
+    background-color: #e5e7eb;
+    border-radius: 4px;
+    align-self: center;
+}
+
+.loading-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #fbbf24;
+    border-radius: 4px;
+    animation: loading 2s linear infinite;
+}
