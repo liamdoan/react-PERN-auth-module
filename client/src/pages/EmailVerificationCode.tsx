@@ -5,7 +5,7 @@ import SubmitButton from '../components/form-components/SubmitButton';
 import axios from 'axios';
 import LoadingBar from '../components/loading/LoadingBar';
 
-const BASE_URL = process.env.BASE_URL;
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const EmailVerificationCode = () => {
     const [code, setCode] = useState(["", "", "", "", "", ""]); 
