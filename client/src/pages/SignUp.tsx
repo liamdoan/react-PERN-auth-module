@@ -7,7 +7,7 @@ import PasswordStrengthIndicator from '../components/form-components/PasswordStr
 import axios from 'axios';
 import LoadingBar from '../components/loading/LoadingBar';
 
-const BASE_URL = "http://localhost:5000/api/auth";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const SignUp = () => {
     const [name, setName] = useState<string>("");
