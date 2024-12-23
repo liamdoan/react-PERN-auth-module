@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './SignUp.css'
 import Input from '../components/form-components/Input';
 import SubmitButton from '../components/form-components/SubmitButton';
@@ -17,6 +17,8 @@ const SignUp = () => {
     const [loading, setLoading] = useState<Boolean>(false);
     const [messageSuccess, setMessageSuccess] = useState<string>("");
     const [messageFailed, setMessageFailed] = useState<string>("");
+
+    const navigate = useNavigate();
 
     const resetForm = () => {
         setName("");
@@ -44,6 +46,8 @@ const SignUp = () => {
             setTimeout(() => setMessageSuccess(""), 3000);
 
             resetForm();
+
+            navigate("/email-verification");
         } catch (error: any) {
             setLoading(false);
             setMessageFailed(error.response.data.message);
