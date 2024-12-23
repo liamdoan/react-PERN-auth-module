@@ -41,9 +41,15 @@ h1 {
     text-decoration: underline;
 }
 
-.error-message {
-    color: red;
+.message-success,
+.message-failed {
     text-align: center;
     font-style: italic;
     margin: 5px 0;
+}
+.message-success {
+    color: greenyellow;
+}
+.message-failed {
+    color: red;
 }
