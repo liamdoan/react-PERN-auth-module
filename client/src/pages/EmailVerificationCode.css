@@ -53,10 +53,17 @@
     border-color: #fbbf24;
 }
 
-.fail-message {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: #ef4444;
+.message-success,
+.message-failed {
+    text-align: center;
+    font-style: italic;
+    margin: 5px 0;
+}
+.message-success {
+    color: greenyellow;
+}
+.message-failed {
+    color: red;
 }
 
 .footer {
