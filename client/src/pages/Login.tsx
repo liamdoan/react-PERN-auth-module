@@ -48,7 +48,7 @@ const Login = () => {
             setTimeout(() => setMessageSuccess(""), 3000);
             resetForm();
 
-            navigate("/");
+            navigate("/home");
         } catch (error: any) {
             dispatch(loginFailed(error.response.data.message));
             
