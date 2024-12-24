@@ -46,6 +46,7 @@ function App() {
     return (
         <div>
             <Routes>
+                <Route path="/" element={<General />}/>
                 <Route path="/home" element={<Home />}/>
                 <Route path="/sign-up" element={<SignUp />}/>
                 <Route path="/email-verification" element={<EmailVerificationCode />}/>
