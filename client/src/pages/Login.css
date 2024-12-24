@@ -27,7 +27,20 @@ h1 {
     width: 100%;
 }
 
-.notice-already-have-account {
+.message-success,
+.message-failed {
+    text-align: center;
+    font-style: italic;
+    margin: 5px 0;
+}
+.message-success {
+    color: greenyellow;
+}
+.message-failed {
+    color: red;
+}
+
+.notice-forgot-password {
     margin: 8px 0 8px 0;
     text-align: center;
     font-size: 0.8rem;
