@@ -34,6 +34,8 @@ const Login = () => {
         try {
             const response = await axios.post(`${BASE_URL}/login`, {
                 email, password
+            }, {
+                withCredentials: true
             })
 
             if (response.data.user) {
