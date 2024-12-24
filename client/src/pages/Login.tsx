@@ -45,6 +45,8 @@ const Login = () => {
             setMessageSuccess(response.data.message);
             setTimeout(() => setMessageSuccess(""), 3000);
             resetForm();
+
+            navigate("/");
         } catch (error: any) {
             dispatch(loginFailed(error.response.data.message));
             
