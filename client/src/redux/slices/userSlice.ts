@@ -4,7 +4,7 @@ const userSlice = createSlice({
     name: 'user',
     initialState: {
         user: null,
-        isAuthenticated: false,
+        isUserAuthenticated: false,
         loading: false,
         error: null
     },
@@ -15,7 +15,7 @@ const userSlice = createSlice({
         },
         loginSuccessful(state, action) {
             state.user = action.payload,
-            state.isAuthenticated = true,
+            state.isUserAuthenticated = true,
             state.loading = false
         },
         loginFailed(state, action) {
@@ -24,7 +24,7 @@ const userSlice = createSlice({
         },
         logout(state) {
             state.user = null,
-            state.isAuthenticated = false,
+            state.isUserAuthenticated = false,
             state.loading = false,
             state.error = null
         }
