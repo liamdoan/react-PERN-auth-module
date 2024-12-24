@@ -1,16 +1,58 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Login.css'
 import Input from '../components/form-components/Input';
 import SubmitButton from '../components/form-components/SubmitButton';
+import { useDispatch } from 'react-redux';
+import { loginFailed, loginStart, loginSuccessful } from '../redux/slices/userSlice';
+import axios from 'axios';
+import LoadingBar from '../components/loading/LoadingBar';
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const Login = () => {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
 
-    const handleLogin = (e: any) => {
-        e.preventDefault();
+    const [loading, setLoading] = useState<Boolean>(false);
+    const [messageSuccess, setMessageSuccess] = useState<string>("");
+    const [messageFailed, setMessageFailed] = useState<string>("");
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const resetForm = () => {
+        setEmail('');
+        setPassword('');
     }
+
+    const handleLogin = async (e: any) => {
+        e.preventDefault();
+        setLoading(true);
+        dispatch(loginStart());
+
+        try {
+            const response = await axios.post(`${BASE_URL}/login`, {
+                email, password
+            })
+
+            if (response.data.user) {
+                const {name, email} = response.data.user;
+                dispatch(loginSuccessful({name, email}));
+            };
+
+            setLoading(false);
+            setMessageSuccess(response.data.message);
+            setTimeout(() => setMessageSuccess(""), 3000);
+            resetForm();
+        } catch (error: any) {
+            dispatch(loginFailed(error.response.data.message));
+            
+            setLoading(false);
+            setMessageFailed(error.response.data.message);
+            setTimeout(() => setMessageFailed(""), 3000);
+        }
+    };
 
     return (
         <div className="login-wrapper">
@@ -30,7 +72,10 @@ const Login = () => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     <SubmitButton title="Log In"/>
-                    <div className='notice-already-have-account'>
+                    { loading && <LoadingBar /> }
+                    { messageSuccess && <span className='message-success'>{messageSuccess}</span> }
+                    { messageFailed && <span className='message-failed'>{messageFailed}</span> }
+                    <div className='notice-forgot-password'>
                         <span className='notice-span'>
                             Forgot your password?
                             <span>&nbsp;</span>
