@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import SignUp from './pages/SignUp'
 import Login from './pages/Login'
-import Home from './pages/Home'
+import UserHome from './pages/UserHome'
 import EmailVerificationCode from './pages/EmailVerificationCode'
 import axios from 'axios'
 import { useEffect } from 'react'
@@ -46,7 +46,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<General />}/>
                  {/* protected candidate HOME */}
-                <Route path="/home" element={<Home />}/>
+                <Route path="/home" element={<UserHome />}/>
                 <Route path="/sign-up" element={<SignUp />}/>
                 <Route path="/email-verification" element={<EmailVerificationCode />}/>
                 <Route path="/login" element={<Login />}/>
@@ -68,5 +68,5 @@ export default App
 
 {/* <Route
     path="/home"
-    element={<ProtectedRoute component={<Home />} />}
+    element={<ProtectedRoute component={<UserHome />} />}
 /> */}

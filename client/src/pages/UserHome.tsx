@@ -1,4 +1,4 @@
-import "./Home.css";
+import "./UserHome.css";
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../redux/store"
 import { Navigate } from "react-router-dom";
@@ -10,7 +10,7 @@ import Spinner from "../components/loading/Spinner";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
-const Home = () => {
+const UserHome = () => {
     const [loading, setLoading] = useState<Boolean>(false);
     const [messageSuccess, setMessageSuccess] = useState<string>("");
     const [messageFailed, setMessageFailed] = useState<string>("");
@@ -67,4 +67,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default UserHome
