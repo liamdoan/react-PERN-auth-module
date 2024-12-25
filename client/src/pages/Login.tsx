@@ -32,6 +32,8 @@ const Login = () => {
         dispatch(loginStart());
 
         try {
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
             const response = await axios.post(`${BASE_URL}/login`, {
                 email, password
             }, {
