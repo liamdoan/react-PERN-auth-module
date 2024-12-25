@@ -4,6 +4,7 @@ const userSlice = createSlice({
     name: 'user',
     initialState: {
         user: null,
+        isCheckingUserAuthenticated: true,
         isUserAuthenticated: false,
         loading: false,
         error: null
@@ -15,15 +16,18 @@ const userSlice = createSlice({
         },
         loginSuccessful(state, action) {
             state.user = action.payload,
+            state.isCheckingUserAuthenticated = false,
             state.isUserAuthenticated = true,
             state.loading = false
         },
         loginFailed(state, action) {
             state.loading = false,
+            state.isCheckingUserAuthenticated = false
             state.error = action.payload;
         },
         logout(state) {
             state.user = null,
+            state.isCheckingUserAuthenticated = false,
             state.isUserAuthenticated = false,
             state.loading = false,
             state.error = null
