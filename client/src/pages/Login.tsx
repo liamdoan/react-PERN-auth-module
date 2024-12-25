@@ -41,8 +41,8 @@ const Login = () => {
             })
 
             if (response.data.user) {
-                const {name, email} = response.data.user;
-                dispatch(loginSuccessful({name, email}));
+                const {name, email, createdAt, lastLogin} = response.data.user;
+                dispatch(loginSuccessful({name, email, createdAt, lastLogin}));
             };
 
             setLoading(false);
