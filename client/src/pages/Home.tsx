@@ -1,10 +1,12 @@
+import "./Home.css";
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../redux/store"
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import axios from "axios";
 import { logout } from "../redux/slices/userSlice";
 import { useState } from "react";
 import LoadingBar from "../components/loading/LoadingBar";
+import Spinner from "../components/loading/Spinner";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -14,14 +16,17 @@ const Home = () => {
     const [messageFailed, setMessageFailed] = useState<string>("");
 
     const user: any = useSelector((state: RootState) => state.user.user);
+    const isCheckingUserAuthenticated = useSelector((state: RootState) => state.user.isCheckingUserAuthenticated);
     const isUserAuthenticated = useSelector((state: RootState) => state.user.isUserAuthenticated);
-    const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    if (!user || !isUserAuthenticated) {
-        navigate('/login');
-        return;
-    };
+    if (isCheckingUserAuthenticated) {
+        return <div className="spinner-wrapper"><Spinner /></div>;
+    }
+
+    if (!isUserAuthenticated) {
+        return <Navigate to="/login" />;
+    }
 
     const handleLogout = async (e: any) => {
         e.preventDefault();
@@ -29,7 +34,6 @@ const Home = () => {
 
         try {
             await new Promise(resolve => setTimeout(resolve, 1000));
-
             const response = await axios.post(`${BASE_URL}/logout`, {}, {
                 withCredentials: true
             });
