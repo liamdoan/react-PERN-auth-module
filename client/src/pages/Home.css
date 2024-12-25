@@ -1,0 +1,41 @@
+.spinner-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-wrapper {
+    background: #0a0a0a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh
+}
+
+.info-wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: #2d2d2d;
+    padding: 2rem;
+    border-radius: 10px;
+    color: white;
+}
+
+button {
+    align-self: center;
+}
+
+.message-success,
+.message-failed {
+    text-align: center;
+    font-style: italic;
+    margin: 5px 0;
+}
+.message-success {
+    color: greenyellow;
+}
+.message-failed {
+    color: red;
+}
