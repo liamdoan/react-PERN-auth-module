@@ -49,16 +49,20 @@ const Home = () => {
     };
     
     return (
-        <div>
-            <p>This is user homepage.</p>
-            <p>Hello: {user.name}</p>
-            <p>Your email is: {user.email}</p>
-            <p>You joined on: {new Date (user.createdAt).toLocaleString()}</p>
-            <p>You last logged in on: {user && new Date(user.lastLogin).toLocaleString()}</p>
-            <button onClick={handleLogout}>Log Out</button>
-            { loading && <LoadingBar /> }
-            { messageSuccess && <span className='message-success'>{messageSuccess}</span> }
-            { messageFailed && <span className='message-failed'>{messageFailed}</span> }
+        <div className="home-wrapper">
+            <h1>This is user homepage</h1>
+            <div className="info-wrapper">
+                <div className="info-text">
+                    <p>Hello: {user.name}</p>
+                    <p>Your email is: {user.email}</p>
+                    <p>You joined on: {new Date (user.createdAt).toLocaleString()}</p>
+                    <p>You last logged in on: {user && new Date(user.lastLogin).toLocaleString()}</p>
+                </div>
+                <button onClick={handleLogout}>Log Out</button>
+                { loading && <LoadingBar /> }
+                { messageSuccess && <span className='message-success'>{messageSuccess}</span> }
+                { messageFailed && <span className='message-failed'>{messageFailed}</span> }
+            </div>
         </div>
     )
 }
