@@ -5,10 +5,8 @@ import Input from '../components/form-components/Input';
 import SubmitButton from '../components/form-components/SubmitButton';
 import { useDispatch } from 'react-redux';
 import { loginFailed, loginStart, loginSuccessful } from '../redux/slices/userSlice';
-import axios from 'axios';
 import LoadingBar from '../components/loading/LoadingBar';
-
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+import { userLogin } from '../utils/apiCalls';
 
 const Login = () => {
     const [email, setEmail] = useState<string>("");
@@ -33,12 +31,7 @@ const Login = () => {
 
         try {
             await new Promise(resolve => setTimeout(resolve, 1000));
-
-            const response = await axios.post(`${BASE_URL}/login`, {
-                email, password
-            }, {
-                withCredentials: true
-            })
+            const response = await userLogin(email, password);
 
             if (response.data.user) {
                 const {name, email, createdAt, lastLogin} = response.data.user;
