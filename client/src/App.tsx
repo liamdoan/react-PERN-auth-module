@@ -10,6 +10,7 @@ import { RootState } from './redux/store'
 import { loginSuccessful, logout } from './redux/slices/userSlice'
 import General from './pages/General'
 import PasswordForgot from './pages/PasswordForgot'
+import PasswordReset from './pages/PasswordReset'
 // import ProtectedRoute from './protected-route/ProtectedRoute' // Used if this project expands
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -52,6 +53,7 @@ function App() {
                 <Route path="/email-verification" element={<EmailVerificationCode />}/>
                 <Route path="/login" element={<Login />}/>
                 <Route path="forgot-password" element={<PasswordForgot />} />
+                <Route path="/reset-password/:token" element={<PasswordReset />}/>
             </Routes>
         </div>
     )
