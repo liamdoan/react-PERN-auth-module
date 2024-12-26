@@ -75,7 +75,7 @@ module.exports.TEMPLATE_PASSWORD_RESET_REQUEST = `
         <h1 style="color: black; margin: 0;">Password Reset</h1>
     </div>
     <div style="background-color: #2d2d2d; color: white; padding: 20px; border-radius: 0 0 5px 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-        <p>A request to reset your password has been received. If this wasn't from you, please ignore this message.</p>
+        <p>A request to reset your password has been received. If this request wasn't from you, please ignore this message.</p>
         <p>Click below button to reset your password:</p>
         <div style="text-align: center; margin: 30px 0;">
             <a href="{resetURL}" style="background-color: rgb(248, 203, 0); color: black; padding: 12px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">Reset Password</a>
