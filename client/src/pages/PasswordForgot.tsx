@@ -4,10 +4,8 @@ import SubmitButton from '../components/form-components/SubmitButton';
 import Input from '../components/form-components/Input';
 import LoadingBar from '../components/loading/LoadingBar';
 import { useState } from 'react';
-import axios from "axios";
 import IconTick from "../components/form-components/IconTick";
-
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+import { forgotPassword } from "../utils/apiCalls";
 
 const PasswordForgot = () => {
     const [email, setEmail] = useState<string>("");
@@ -23,11 +21,7 @@ const PasswordForgot = () => {
 
         try {
             await new Promise(resolve => setTimeout(resolve, 1000));
-            const response = await axios.post(`${BASE_URL}/forgot-password`, {
-                email
-            }, {
-                withCredentials: true
-            });
+            const response = await forgotPassword(email);
 
             setLoading(false);
             setEmail("");

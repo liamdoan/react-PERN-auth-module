@@ -26,4 +26,18 @@ export const userLogout = async () => {
     } catch (error) {
         throw error;
     }
-}
+};
+
+export const forgotPassword = async (email: string) => {
+    try {
+        const response = await axios.post(`${BASE_URL}/forgot-password`, {
+            email
+        }, {
+            withCredentials: true
+        });
+
+        return response;
+    } catch (error) {
+        throw error;
+    }
+};
