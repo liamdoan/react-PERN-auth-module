@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "axios";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -12,6 +12,18 @@ export const userLogin = async (email: string, password: string) => {
 
         return response;
     } catch (error) {
-        throw error
+        throw error;
     }
 };
+
+export const userLogout = async () => {
+    try {
+        const response = await axios.post(`${BASE_URL}/logout`, {}, {
+            withCredentials: true
+        });
+
+        return response;
+    } catch (error) {
+        throw error;
+    }
+}

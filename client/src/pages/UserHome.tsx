@@ -2,13 +2,11 @@ import "./UserHome.css";
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../redux/store"
 import { Navigate } from "react-router-dom";
-import axios from "axios";
 import { logout } from "../redux/slices/userSlice";
 import { useState } from "react";
 import LoadingBar from "../components/loading/LoadingBar";
 import Spinner from "../components/loading/Spinner";
-
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+import { userLogout } from "../utils/apiCalls";
 
 const UserHome = () => {
     const [loading, setLoading] = useState<Boolean>(false);
@@ -34,9 +32,7 @@ const UserHome = () => {
 
         try {
             await new Promise(resolve => setTimeout(resolve, 1000));
-            const response = await axios.post(`${BASE_URL}/logout`, {}, {
-                withCredentials: true
-            });
+            const response = await userLogout();
 
             setLoading(false);
             setMessageSuccess(response.data.message);
