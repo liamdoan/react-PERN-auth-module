@@ -1,4 +1,4 @@
-module.exports.VERIFICATION_EMAIL_TEMPLATE = `
+module.exports.TEMPLATE_VERIFICATION_EMAIL = `
 <!DOCTYPE html>
 <html lang="en">
 <head>

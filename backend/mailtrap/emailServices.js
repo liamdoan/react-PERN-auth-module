@@ -1,4 +1,4 @@
-const { VERIFICATION_EMAIL_TEMPLATE, PASSWORD_RESET_REQUEST_TEMPLATE, PASSWORD_RESET_SUCCESS_TEMPLATE } = require("./emailTemplates");
+const { TEMPLATE_VERIFICATION_EMAIL, PASSWORD_RESET_REQUEST_TEMPLATE, PASSWORD_RESET_SUCCESS_TEMPLATE } = require("./emailTemplates");
 const { sender, mailtrapClient } = require("./mailTrapConfig");
 
 // call this in Signup controller
@@ -11,7 +11,7 @@ module.exports.sendVerificationEmail = async (email, verificationToken) => {
             from: sender, //sender in the config
             to: recipientEmail,
             subject: "Verify your email",
-            html:   VERIFICATION_EMAIL_TEMPLATE.replace("{verificationCode}", verificationToken),
+            html:   TEMPLATE_VERIFICATION_EMAIL.replace("{verificationCode}", verificationToken),
             category: "Email Verification"
         });
 
