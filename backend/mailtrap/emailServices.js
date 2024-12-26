@@ -1,4 +1,4 @@
-const { TEMPLATE_VERIFICATION_EMAIL, TEMPLATE_PASSWORD_RESET_REQUEST, TEMPLATE_PASSWORD_RESET_SUCCESS } = require("./emailTemplates");
+const { TEMPLATE_VERIFICATION_EMAIL, TEMPLATE_WELCOME, TEMPLATE_PASSWORD_RESET_REQUEST, TEMPLATE_PASSWORD_RESET_SUCCESS } = require("./emailTemplates");
 const { sender, mailtrapClient } = require("./mailTrapConfig");
 
 // call this in Signup controller
@@ -30,11 +30,9 @@ module.exports.sendWelcomeEmail = async (email, userName) => {
         const response = await mailtrapClient.send({
             from: sender,
             to: recipientEmail,
-            template_uuid: "e5acfa27-16e7-4c51-9154-ba7363eb62eb", // template created at MailTrap
-            template_variables: {
-                "company_info_name": "Lam Doan .Inc",
-                "name": userName
-            }
+            subject: "Welcome To LD Inc.",
+            html: TEMPLATE_WELCOME.replace("{userName}", userName),
+            category: "Welcome Email"
         });
 
         console.log("Welcome email sent!", response);
