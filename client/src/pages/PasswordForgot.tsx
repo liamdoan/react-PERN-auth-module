@@ -14,6 +14,7 @@ const PasswordForgot = () => {
     const [loading, setLoading] = useState<Boolean>(false);
     const [messageSuccess, setMessageSuccess] = useState<string>("");
     const [messageFailed, setMessageFailed] = useState<string>("");
+    const [submitSuccess, setSubmitSuccess] = useState<Boolean>(false);
 
     const handleSubmitEmail = async (e: any) => {
         e.preventDefault();
@@ -31,10 +32,12 @@ const PasswordForgot = () => {
             setEmail("");
             setMessageSuccess(response.data.message);
             setMessageFailed("");
+            setSubmitSuccess(true);
         } catch (error: any) {
             setLoading(false);
             setMessageSuccess("");
             setMessageFailed(error.response.data.message)
+            setSubmitSuccess(false);
         }
     };
 
@@ -42,19 +45,26 @@ const PasswordForgot = () => {
         <div className="password-forgot-wrapper">
             <div className='password-forgot-form'>
                 <h1>Forgot Password</h1>
-                <p className="password-forgot-notice">After entering your email, a link to reset your password will be sent to your provided email address.</p>
-                <form className='password-forgot-form-input' action="" onSubmit={handleSubmitEmail}>
-                    <Input
-                        type="email"
-                        placeholder='Email'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <SubmitButton title="Send me reset password link" disabled={!email}/>
-                    { loading && <LoadingBar /> }
-                    { messageSuccess && <span className='message-success'>{messageSuccess}</span> }
-                    { messageFailed && <span className='message-failed'>{messageFailed}</span> }
-                </form>
+                {!submitSuccess
+                    ? <>
+                        <p className="password-forgot-notice">After entering your email, a link to reset your password will be sent to your provided email address.</p>
+                        <form className='password-forgot-form-input' action="" onSubmit={handleSubmitEmail}>
+                            <Input
+                                type="email"
+                                placeholder='Email'
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <SubmitButton title="Send me reset password link" disabled={!email}/>
+                            { loading && <LoadingBar /> }
+                            { messageFailed && <span className='message-failed'>{messageFailed}</span> }
+                        </form>
+                    </>
+                    : <>
+                        <div className="tick-icon">✓</div>
+                        { messageSuccess && <span className='message-success'>{messageSuccess}</span> }
+                    </>
+                }
             </div>
         </div>
     )
