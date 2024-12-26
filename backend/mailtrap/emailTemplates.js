@@ -28,7 +28,7 @@ module.exports.TEMPLATE_VERIFICATION_EMAIL = `
 </html>
 `;
 
-module.exports.PASSWORD_RESET_SUCCESS_TEMPLATE = `
+module.exports.TEMPLATE_PASSWORD_RESET_SUCCESS = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,7 +65,7 @@ module.exports.PASSWORD_RESET_SUCCESS_TEMPLATE = `
 </html>
 `;
 
-module.exports.PASSWORD_RESET_REQUEST_TEMPLATE = `
+module.exports.TEMPLATE_PASSWORD_RESET_REQUEST = `
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,4 +1,4 @@
-const { TEMPLATE_VERIFICATION_EMAIL, PASSWORD_RESET_REQUEST_TEMPLATE, TEMPLATE_PASSWORD_RESET_SUCCESS } = require("./emailTemplates");
+const { TEMPLATE_VERIFICATION_EMAIL, TEMPLATE_PASSWORD_RESET_REQUEST, TEMPLATE_PASSWORD_RESET_SUCCESS } = require("./emailTemplates");
 const { sender, mailtrapClient } = require("./mailTrapConfig");
 
 // call this in Signup controller
@@ -52,7 +52,7 @@ module.exports.sendPasswordResetEmail = async (email, resetUrl) => {
             from: sender,
             to: recipientEmail,
             subject: "Reset your password",
-            html: PASSWORD_RESET_REQUEST_TEMPLATE.replace("{resetURL}", resetUrl),
+            html: TEMPLATE_PASSWORD_RESET_REQUEST.replace("{resetURL}", resetUrl),
             category: "Reset password"
         });
 
