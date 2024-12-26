@@ -5,6 +5,7 @@ import Input from '../components/form-components/Input';
 import LoadingBar from '../components/loading/LoadingBar';
 import { useState } from 'react';
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -63,6 +64,9 @@ const PasswordForgot = () => {
                     : <>
                         <div className="tick-icon">✓</div>
                         { messageSuccess && <span className='message-success'>{messageSuccess}</span> }
+                        <button className="back-to-login">
+                            <Link className='back-to-login-link' to={"/login"}>&larr; Back to login page.</Link>
+                        </button>
                     </>
                 }
             </div>
