@@ -27,6 +27,39 @@ module.exports.TEMPLATE_VERIFICATION_EMAIL = `
 </html>
 `;
 
+module.exports.TEMPLATE_WELCOME = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to LD Inc.</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.5; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+    <div style="background: linear-gradient(to right, rgb(248, 203, 0), rgb(223, 182, 0)); padding: 20px; text-align: center;">
+        <h1 style="color: black; margin: 0;">Welcome Onboard!</h1>
+    </div>
+    <div style="background-color: #2d2d2d; color: white; padding: 20px; border-radius: 0 0 5px 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <div>
+            <img
+                src="https://s3.envato.com/files/270424804/EE4I5809%20copy.jpg"
+                alt="LD Inc."
+                style="max-width: 100%; max-height: 100%; object-fit: contain;"
+            >
+        </div>
+        <p>Hello {userName}.</p>
+        <p>We warmly welcome you to LD Inc.</p>
+        <p>Thank you for choosing us. We are happy to see you on board.</p>
+        <p>We hope you enjoy our journey together as much as we enjoy having you with us.</p>
+        <p>Warm regards,<br>LD inc. Team</p>
+    </div>
+    <div style="text-align: center; margin-top: 20px; color: #888; font-size: 0.8em;">
+        <p>This is an automated message, please do not reply to this email.</p>
+    </div>
+</body>
+</html>
+`;
+
 module.exports.TEMPLATE_PASSWORD_RESET_SUCCESS = `
 <!DOCTYPE html>
 <html lang="en">
