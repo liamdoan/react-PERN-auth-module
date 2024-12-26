@@ -4,10 +4,8 @@ import './SignUp.css'
 import Input from '../components/form-components/Input';
 import SubmitButton from '../components/form-components/SubmitButton';
 import PasswordStrengthIndicator from '../components/form-components/PasswordStrengthIndicator';
-import axios from 'axios';
 import LoadingBar from '../components/loading/LoadingBar';
-
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+import { userSignUp } from '../utils/apiCalls';
 
 const SignUp = () => {
     const [name, setName] = useState<string>("");
@@ -34,9 +32,8 @@ const SignUp = () => {
         };
 
         try {
-            const response = await axios.post(`${BASE_URL}/signup`, {
-                name, email, password
-            });
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            const response = await userSignUp(name, email, password);
 
             setLoading(false);
             setMessageSuccess(response.data.message);
