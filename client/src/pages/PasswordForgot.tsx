@@ -6,6 +6,7 @@ import LoadingBar from '../components/loading/LoadingBar';
 import { useState } from 'react';
 import axios from "axios";
 import { Link } from "react-router-dom";
+import IconTick from "../components/form-components/IconTick";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -62,7 +63,7 @@ const PasswordForgot = () => {
                         </form>
                     </>
                     : <>
-                        <div className="tick-icon">✓</div>
+                        <IconTick />
                         { messageSuccess && <span className='message-success'>{messageSuccess}</span> }
                         <button className="back-to-login">
                             <Link className='back-to-login-link' to={"/login"}>&larr; Back to login page.</Link>
