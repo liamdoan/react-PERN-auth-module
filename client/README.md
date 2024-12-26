@@ -1,10 +1,25 @@
-Login and checkAuth both dispatch loginSuccess reducer, but Login starts a new session,
-and checkAuth validates an existing session.
+Full authentication model with React-Nodejs-Espress-MongoDB.
 
-when the App is loaded, frontend sent a request to server to check authentication status with `check-auth` endpoint.
-Server verifies the jwt token. If token is valid, returns user data, else returns error.
+- After user signs up, an email with verification code is sent to user email.
+- After providing correct code, user account will be verified, and then direct to login page.
+- User logs in, and will be direct to Homepage which is a `protected route`, only authenticated user can see.
+- With cookie, if user session is still valid, user will not have to log in if browser is shut down or refreshed.
+- After clicking Forgot Password button and providing correct email, a link to reset password is sent to user email.
+  Through that link, user can provide new password. If everything works, an email to confirm password reset will be sent.
 
-After serer validates token, frontend updates isUserAuthenticated state. If not, dispatch logout reducer.
+Frontend:
+
+- TypeScript React, Redux.
+
+Backend:
+
+- NodeJS, Express, with jwt (jsonwebtoken), bcryptjs and crypto library.
+
+Database:
+
+- MongoDB
+
+Further expansion: integrate with an existing project, user can log in and only see data belonging to that user.
 
 # React + TypeScript + Vite
 
