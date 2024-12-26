@@ -14,6 +14,18 @@ export const userSignUp = async (name: string, email: string, password: string) 
     }
 };
 
+export const emailVerificationCode = async (verificationCode: string) => {
+    try {
+        const response = await axios.post(`${BASE_URL}/verify-email`, {
+            verificationCode
+        });
+
+        return response;
+    } catch (error) {
+        throw error;
+    }
+};
+
 export const userLogin = async (email: string, password: string) => {
     try {
         const response = await axios.post(`${BASE_URL}/login`, {

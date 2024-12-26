@@ -2,10 +2,8 @@ import React, { useRef, useState } from 'react'
 import "./EmailVerificationCode.css"
 import { useNavigate } from 'react-router-dom';
 import SubmitButton from '../components/form-components/SubmitButton';
-import axios from 'axios';
 import LoadingBar from '../components/loading/LoadingBar';
-
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+import { emailVerificationCode } from '../utils/apiCalls';
 
 const EmailVerificationCode = () => {
     const [code, setCode] = useState(["", "", "", "", "", ""]); 
@@ -50,9 +48,7 @@ const EmailVerificationCode = () => {
         setIsButtonDisabled(true);
 
         try {
-            const response = await axios.post(`${BASE_URL}/verify-email`, {
-                verificationCode: userTypedCode
-            });
+            const response = await emailVerificationCode(userTypedCode);
 
             setLoading(false);
             setMessageSuccess(response.data.message);
