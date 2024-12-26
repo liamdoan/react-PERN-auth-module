@@ -9,7 +9,7 @@ module.exports.forgotPassword = async (req, res) => {
 
         if (!user) {
             return res.status(400).json({
-                message: "No user found! Rest password failed!"
+                message: "No user found! Make sure you enter correct email."
             })
         };
 
@@ -24,7 +24,7 @@ module.exports.forgotPassword = async (req, res) => {
         await sendPasswordResetEmail(user.email, `${process.env.DEVELOPMENT_URL}/reset-password/${resetToken}`);
 
         res.status(200).json({
-            message: "Reset password email sent ok!"
+            message: "Reset password link has been sent!"
         })
     } catch (error) {
         console.log("Login error: ", error);
