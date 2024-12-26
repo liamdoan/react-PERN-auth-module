@@ -41,3 +41,21 @@ export const forgotPassword = async (email: string) => {
         throw error;
     }
 };
+
+export const resetPassword = async (token: string | undefined, newPassword: string) => {
+    if (!token) {
+        throw new Error("Token is required!")
+    }
+
+    try {
+        const response = await axios.post(`${BASE_URL}/reset-password/${token}`, {
+            newPassword
+        }, {
+            withCredentials: true
+        })
+
+        return response;
+    } catch (error) {
+        throw error;
+    }
+};
