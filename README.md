@@ -1,4 +1,4 @@
-Full authentication model with React-Nodejs-Espress-MongoDB.
+Full authentication model with React-Nodejs-Espress-MongoDB, redux.
 
 - After user signs up, an email with verification code is sent to user email.
 - After providing correct code, user account will be verified, and then direct to login page.
