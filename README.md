@@ -1,4 +1,6 @@
-Full authentication model with React-Nodejs-Espress-MongoDB, redux.
+## Description
+
+Full authentication model with React-Nodejs-Espress-MongoDB, redux. (screenshot below)
 
 - After user signs up, an email with verification code is sent to user email
   (currently tested ok with Mailtrap demo, and demo service only allows Mailtrap to send emails to user's own account email address - me).
@@ -21,3 +23,9 @@ Database:
 - MongoDB
 
 Further expansion: integrate with an existing project, user can log in and only see data belonging to that user.
+
+## Screenshot
+
+![Email Screenshots](screenshot/email-screens.png)
+
+![UI Screenshots](screenshot/user-screens.png)
