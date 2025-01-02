@@ -26,6 +26,6 @@ Further expansion: integrate with an existing project, user can log in and only 
 
 ## Screenshot
 
-![Email Screenshots](screenshot/email-screens.png)
+![Email Screenshots](client/public/screenshots/email-screens.png)
 
-![UI Screenshots](screenshot/user-screens.png)
+![UI Screenshots](client/public/screenshots/user-screens.png)
