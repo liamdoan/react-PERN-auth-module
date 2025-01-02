@@ -1,6 +1,7 @@
 Full authentication model with React-Nodejs-Espress-MongoDB, redux.
 
-- After user signs up, an email with verification code is sent to user email.
+- After user signs up, an email with verification code is sent to user email
+  (currently tested ok with Mailtrap demo, and demo service only allows Mailtrap to send emails to user's own account email address - me).
 - After providing correct code, user account will be verified, and then direct to login page.
 - User logs in, and will be direct to Homepage which is a `protected route`, only authenticated user can see.
 - With cookie, if user session is still valid, user will not have to log in if browser is shut down or refreshed.
