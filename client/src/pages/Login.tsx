@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.css'
-import Input from '../components/form-components/Input';
-import SubmitButton from '../components/form-components/SubmitButton';
+import Input from '../components/auth-form-components/Input';
+import SubmitButton from '../components/auth-form-components/SubmitButton';
 import { useDispatch } from 'react-redux';
 import { loginFailed, loginStart, loginSuccessful } from '../redux/slices/userSlice';
 import LoadingBar from '../components/loading/LoadingBar';

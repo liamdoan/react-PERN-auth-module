@@ -1,10 +1,10 @@
 
 import "./PasswordForgot.css"
-import SubmitButton from '../components/form-components/SubmitButton';
-import Input from '../components/form-components/Input';
+import SubmitButton from '../components/auth-form-components/SubmitButton';
+import Input from '../components/auth-form-components/Input';
 import LoadingBar from '../components/loading/LoadingBar';
 import { useState } from 'react';
-import IconTick from "../components/form-components/IconTick";
+import IconTick from "../components/auth-form-components/IconTick";
 import { forgotPassword } from "../utils/authApiCalls";
 
 const PasswordForgot = () => {
