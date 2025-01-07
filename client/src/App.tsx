@@ -8,7 +8,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from './redux/store'
 import { loginSuccessful, logout } from './redux/slices/userSlice'
-import General from './pages/General'
+import GeneralHome from './pages/GeneralHome'
 import PasswordForgot from './pages/PasswordForgot'
 import PasswordReset from './pages/PasswordReset'
 // import ProtectedRoute from './protected-route/ProtectedRoute' // Used if this project expands
@@ -46,7 +46,7 @@ function App() {
     return (
         <div>
             <Routes>
-                <Route path="/" element={<General />}/>
+                <Route path="/" element={<GeneralHome />}/>
                  {/* protected candidate HOME */}
                 <Route path="/home" element={<UserHome />}/>
                 <Route path="/sign-up" element={<SignUp />}/>
