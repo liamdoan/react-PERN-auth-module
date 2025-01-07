@@ -5,7 +5,7 @@ import SubmitButton from "../components/form-components/SubmitButton";
 import LoadingBar from "../components/loading/LoadingBar";
 import { Link, useParams } from "react-router-dom";
 import IconTick from "../components/form-components/IconTick";
-import { resetPassword } from "../utils/apiCalls";
+import { resetPassword } from "../utils/authApiCalls";
 
 const PasswordReset = () => {
     const {token} = useParams();

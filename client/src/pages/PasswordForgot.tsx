@@ -5,7 +5,7 @@ import Input from '../components/form-components/Input';
 import LoadingBar from '../components/loading/LoadingBar';
 import { useState } from 'react';
 import IconTick from "../components/form-components/IconTick";
-import { forgotPassword } from "../utils/apiCalls";
+import { forgotPassword } from "../utils/authApiCalls";
 
 const PasswordForgot = () => {
     const [email, setEmail] = useState<string>("");

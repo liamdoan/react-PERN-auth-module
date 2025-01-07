@@ -6,7 +6,7 @@ import { logout } from "../redux/slices/userSlice";
 import { useState } from "react";
 import LoadingBar from "../components/loading/LoadingBar";
 import Spinner from "../components/loading/Spinner";
-import { userLogout } from "../utils/apiCalls";
+import { userLogout } from "../utils/authApiCalls";
 
 const UserHome = () => {
     const [loading, setLoading] = useState<Boolean>(false);

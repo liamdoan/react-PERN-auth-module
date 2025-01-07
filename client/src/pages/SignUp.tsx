@@ -5,7 +5,7 @@ import Input from '../components/form-components/Input';
 import SubmitButton from '../components/form-components/SubmitButton';
 import PasswordStrengthIndicator from '../components/form-components/PasswordStrengthIndicator';
 import LoadingBar from '../components/loading/LoadingBar';
-import { userSignUp } from '../utils/apiCalls';
+import { userSignUp } from '../utils/authApiCalls';
 
 const SignUp = () => {
     const [name, setName] = useState<string>("");

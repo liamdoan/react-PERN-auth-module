@@ -3,7 +3,7 @@ import "./EmailVerificationCode.css"
 import { useNavigate } from 'react-router-dom';
 import SubmitButton from '../components/form-components/SubmitButton';
 import LoadingBar from '../components/loading/LoadingBar';
-import { emailVerificationCode } from '../utils/apiCalls';
+import { emailVerificationCode } from '../utils/authApiCalls';
 
 const EmailVerificationCode = () => {
     const [code, setCode] = useState(["", "", "", "", "", ""]); 

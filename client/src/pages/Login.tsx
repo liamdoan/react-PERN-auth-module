@@ -6,7 +6,7 @@ import SubmitButton from '../components/form-components/SubmitButton';
 import { useDispatch } from 'react-redux';
 import { loginFailed, loginStart, loginSuccessful } from '../redux/slices/userSlice';
 import LoadingBar from '../components/loading/LoadingBar';
-import { userLogin } from '../utils/apiCalls';
+import { userLogin } from '../utils/authApiCalls';
 
 const Login = () => {
     const [email, setEmail] = useState<string>("");
