@@ -1,6 +1,6 @@
-const { sendPasswordResetEmailSuccess } = require("../mailtrap/emailServices");
-const userModel = require("../models/userModel");
-const { generateHashPassword } = require("../utils/generateHashPassword");
+const { sendPasswordResetEmailSuccess } = require("../../mailtrap/emailServices");
+const userModel = require("../../models/userModel");
+const { generateHashPassword } = require("../../utils/generateHashPassword");
 
 module.exports.resetPassword = async (req, res) => {
     const {token} = req.params;

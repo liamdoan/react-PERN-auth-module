@@ -1,8 +1,8 @@
-const userModel = require("../models/userModel");
-const { generateHashPassword } = require("../utils/generateHashPassword");
-const { generateVerificationToken } = require("../utils/generateVerificationToken");
-const { generateTokenAndSetCookies } = require("../utils/generateTokenAndSetCookies");
-const { sendVerificationEmail } = require("../mailtrap/emailServices");
+const userModel = require("../../models/userModel");
+const { generateHashPassword } = require("../../utils/generateHashPassword");
+const { generateVerificationToken } = require("../../utils/generateVerificationToken");
+const { generateTokenAndSetCookies } = require("../../utils/generateTokenAndSetCookies");
+const { sendVerificationEmail } = require("../../mailtrap/emailServices");
 
 module.exports.signUp = async (req, res) => {
     const {name, email, password} = req.body;

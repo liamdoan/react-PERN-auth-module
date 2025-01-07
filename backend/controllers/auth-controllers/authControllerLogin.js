@@ -1,6 +1,6 @@
-const userModel = require("../models/userModel");
+const userModel = require("../../models/userModel");
 const bcryptjs = require('bcryptjs');
-const { generateTokenAndSetCookies } = require("../utils/generateTokenAndSetCookies");
+const { generateTokenAndSetCookies } = require("../../utils/generateTokenAndSetCookies");
 
 module.exports.logIn = async (req, res) => {
     const {email, password} = req.body;

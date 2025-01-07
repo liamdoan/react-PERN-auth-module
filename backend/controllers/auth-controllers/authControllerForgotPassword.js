@@ -1,6 +1,6 @@
-const { sendPasswordResetEmail } = require("../mailtrap/emailServices");
-const userModel = require("../models/userModel");
-const { generateResetToken } = require("../utils/generateResetToken");
+const { sendPasswordResetEmail } = require("../../mailtrap/emailServices");
+const userModel = require("../../models/userModel");
+const { generateResetToken } = require("../../utils/generateResetToken");
 
 module.exports.forgotPassword = async (req, res) => {
     const {email} = req.body;
