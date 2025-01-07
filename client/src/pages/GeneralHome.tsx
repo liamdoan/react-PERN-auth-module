@@ -1,4 +1,4 @@
-
+import "./GeneralHome.css";
 
 const GeneralHome = () => {
   return (
