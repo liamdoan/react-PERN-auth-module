@@ -1,0 +1,55 @@
+.navbar {
+    padding: 0 10px;
+    background-color: #0a0a0a;
+    height: 70px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h2 {
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.main-section {
+    height: calc(100vh - 70px);
+    background: #0a0a0a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-button,
+.create-account-button {
+    margin: 8px 0 8px 0;
+    padding:10px;
+    align-self: center;
+    text-align: center;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+}
+.login-button {
+    width: 100px;
+    background-color: white;
+}
+.create-account-button {
+    width: 200px;
+    background-color: rgb(223, 182, 0);
+    transition: background-color 0.2s ease-in-out;
+}
+
+.create-account-button:hover {
+    background-color: rgb(248, 203, 0);
+}
+
+.navigate-link {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
