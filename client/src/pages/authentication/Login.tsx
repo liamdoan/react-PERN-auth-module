@@ -1,14 +1,14 @@
 import './Login.css';
 import { useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import Input from '../components/auth-form-components/Input';
-import SubmitButton from '../components/auth-form-components/SubmitButton';
+import Input from '../../components/auth-form-components/Input';
+import SubmitButton from '../../components/auth-form-components/SubmitButton';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginFailed, loginStart, loginSuccessful } from '../redux/slices/userSlice';
-import { RootState } from '../redux/store';
-import { userLogin } from '../utils/authApiCalls';
-import LoadingBar from '../components/loading/LoadingBar';
-import Spinner from '../components/loading/Spinner';
+import { loginFailed, loginStart, loginSuccessful } from '../../redux/slices/userSlice';
+import { RootState } from '../../redux/store';
+import { userLogin } from '../../utils/authApiCalls';
+import LoadingBar from '../../components/loading/LoadingBar';
+import Spinner from '../../components/loading/Spinner';
 
 const Login = () => {
     const [email, setEmail] = useState<string>("");

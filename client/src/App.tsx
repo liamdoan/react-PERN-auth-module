@@ -1,16 +1,16 @@
 import { Route, Routes } from 'react-router-dom'
-import SignUp from './pages/SignUp'
-import Login from './pages/Login'
-import UserHome from './pages/UserHome'
-import EmailVerificationCode from './pages/EmailVerificationCode'
 import axios from 'axios'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from './redux/store'
 import { loginSuccessful, logout } from './redux/slices/userSlice'
 import GeneralHome from './pages/GeneralHome'
-import PasswordForgot from './pages/PasswordForgot'
-import PasswordReset from './pages/PasswordReset'
+import UserHome from './pages/UserHome'
+import SignUp from './pages/authentication/SignUp'
+import Login from './pages/authentication/Login'
+import EmailVerificationCode from './pages/authentication/EmailVerificationCode'
+import PasswordForgot from './pages/authentication/PasswordForgot'
+import PasswordReset from './pages/authentication/PasswordReset'
 // import ProtectedRoute from './protected-route/ProtectedRoute' // Used if this project expands
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;

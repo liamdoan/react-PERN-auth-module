@@ -1,11 +1,11 @@
 
 import "./PasswordForgot.css"
-import SubmitButton from '../components/auth-form-components/SubmitButton';
-import Input from '../components/auth-form-components/Input';
-import LoadingBar from '../components/loading/LoadingBar';
+import SubmitButton from '../../components/auth-form-components/SubmitButton';
+import Input from '../../components/auth-form-components/Input';
+import LoadingBar from '../../components/loading/LoadingBar';
 import { useState } from 'react';
-import IconTick from "../components/auth-form-components/IconTick";
-import { forgotPassword } from "../utils/authApiCalls";
+import IconTick from "../../components/auth-form-components/IconTick";
+import { forgotPassword } from "../../utils/authApiCalls";
 
 const PasswordForgot = () => {
     const [email, setEmail] = useState<string>("");

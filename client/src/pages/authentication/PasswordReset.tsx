@@ -1,11 +1,11 @@
 import "./PasswordReset.css";
 import { useState } from "react";
-import Input from "../components/auth-form-components/Input";
-import SubmitButton from "../components/auth-form-components/SubmitButton";
-import LoadingBar from "../components/loading/LoadingBar";
+import Input from "../../components/auth-form-components/Input";
+import SubmitButton from "../../components/auth-form-components/SubmitButton";
+import LoadingBar from "../../components/loading/LoadingBar";
 import { Link, useParams } from "react-router-dom";
-import IconTick from "../components/auth-form-components/IconTick";
-import { resetPassword } from "../utils/authApiCalls";
+import IconTick from "../../components/auth-form-components/IconTick";
+import { resetPassword } from "../../utils/authApiCalls";
 
 const PasswordReset = () => {
     const {token} = useParams();
