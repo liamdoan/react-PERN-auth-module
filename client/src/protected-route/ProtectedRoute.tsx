@@ -1,4 +1,4 @@
-import "./ProtectedRoute.css";
+import styles from "./ProtectedRoute.module.css";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { RootState } from "../redux/store";
@@ -9,7 +9,7 @@ const ProtectedRoute = ({ component }: { component: JSX.Element }) => {
     const isUserAuthenticated = useSelector((state: RootState) => state.user.isUserAuthenticated);
 
     if (isCheckingUserAuthenticated) {
-        return <div className="spinner-wrapper"><Spinner /></div>;
+        return <div className={styles.spinnerWrapper}><Spinner /></div>;
     }
 
     if (!isUserAuthenticated) {
