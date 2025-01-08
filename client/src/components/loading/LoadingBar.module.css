@@ -7,7 +7,7 @@
     }
 }
 
-.loading-bar-container {
+.container {
     position: relative;
     margin: 8px 0;
     width: 90%;
@@ -17,7 +17,7 @@
     align-self: center;
 }
 
-.loading-bar {
+.loadingBar {
     position: absolute;
     top: 0;
     left: 0;

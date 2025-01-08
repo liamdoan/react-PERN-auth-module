@@ -1,4 +1,4 @@
-.login-wrapper {
+.wrapper {
     background: #0a0a0a;
     display: flex;
     justify-content: center;
@@ -10,7 +10,7 @@ h1 {
     color: rgb(248, 203, 0);
 }
 
-.login-form {
+.form {
     background-color: #2d2d2d;
     padding: 2rem;
     border-radius: 10px;
@@ -21,35 +21,35 @@ h1 {
     align-items: center;
 }
 
-.login-form-input {
+.input {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-.message-success,
-.message-failed {
-    text-align: center;
-    font-style: italic;
-    margin: 5px 0;
-}
-.message-success {
-    color: greenyellow;
-}
-.message-failed {
-    color: red;
-}
-
-.notice-forgot-password {
+.noticeAlreadyHaveAccount {
     margin: 8px 0 8px 0;
     text-align: center;
     font-size: 0.8rem;
 }
 
-.forgot-password-direct {
+.loginDirect {
     text-decoration: none;
     color: rgb(248, 203, 0);
 }
-.forgot-password-direct:hover {
+.loginDirect:hover {
     text-decoration: underline;
+}
+
+.messageSuccess,
+.messageFailed {
+    text-align: center;
+    font-style: italic;
+    margin: 5px 0;
+}
+.messageSuccess {
+    color: greenyellow;
+}
+.messageFailed {
+    color: red;
 }

@@ -1,5 +1,5 @@
-import React from "react"
-import "./SubmitButton.css"
+import React from "react";
+import styles from "./SubmitButton.module.css";
 
 interface SubmitButtonProps {
     title: string,
@@ -8,7 +8,7 @@ interface SubmitButtonProps {
 
 const SubmitButton: React.FC<SubmitButtonProps> = ({ title, disabled }) => {
   return (
-    <button type="submit" disabled={disabled}>
+    <button className={styles.button} type="submit" disabled={disabled}>
         {title}
     </button>
   )

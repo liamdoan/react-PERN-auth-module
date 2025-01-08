@@ -1,4 +1,4 @@
-import "./PasswordStrengthIndicator.css";
+import styles from "./PasswordStrengthIndicator.module.css";
 
 interface PasswordStrengthIndicatorProps {
     password: string
@@ -35,21 +35,21 @@ const PasswordStrengthIndicator: React.FC<PasswordStrengthIndicatorProps> = ({pa
     const strengthLevel = strengthLevels[strength - 1] || "";
 
     return (
-        <div className="password-strength-indicator">
-            <div className="strength-label">{strengthLevel}</div>
-            <div className="strength-bars">
+        <div className={styles.passwordStrengthIndicator}>
+            <div className={styles.strengthLabel}>{strengthLevel}</div>
+            <div className={styles.strengthBars}>
                 {Array.from({length: conditions.length}).map((_, index) => (
                     <div
                         key={index}
-                        className={`strength-bar ${index < strength ? "active" : ""}`}
+                        className={`${styles.strengthBar} ${index < strength ? styles.active : ""}`}
                     />
                 ))}
             </div>
-            <ul className="conditions-list">
+            <ul className={styles.conditionsList}>
                 {conditions.map((condition, index) => (
                     <li
                         key={condition.name}
-                        className={`condition ${metConditions[index] ? "passed" : "not-passed"}`}
+                        className={`${styles.condition} ${metConditions[index] ? styles.passed : styles.notPassed}`}
                     >
                         {condition.name}
                     </li>

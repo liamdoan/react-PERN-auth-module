@@ -1,4 +1,4 @@
-import "./PasswordReset.css";
+import styles from "./PasswordReset.module.css";
 import { useState } from "react";
 import Input from "../../components/auth-form-components/Input";
 import SubmitButton from "../../components/auth-form-components/SubmitButton";
@@ -57,42 +57,45 @@ const PasswordReset = () => {
     }
 
     return (
-        <div className="password-reset-wrapper">
-            <div className='password-reset-form'>
+        <div className={styles.wrapper}>
+            <div className={styles.formWrapper}>
                 <h1>Reset your password</h1>
-                <form className='password-reset-form-input' action="" onSubmit={handleSubmitResetPassword}>
-                    <Input
-                        type="text"
-                        placeholder='New Password'
-                        value={newPassword}
-                        onChange={(e) => {
-                            setNewPassword(e.target.value),
-                            setMessageConfirm("")
-                        }}
-                    />
-                    <Input
-                        type="text"
-                        placeholder='Confirm New Password'
-                        value={confirmedNewPassword}
-                        onChange={(e) => {
-                            setConfirmedNewPassword(e.target.value),
-                            setMessageConfirm("")
-                        }}
-                    />
-                    <SubmitButton title="Confirm new password" disabled={!newPassword || !confirmedNewPassword}/>
-                    { loading && <LoadingBar /> }
-                    { messageConfirm && <span className='message-failed'>{messageConfirm}</span> }
-                    { messageFailed && <span className='message-failed'>{messageFailed}</span> }
-                    {submitSuccess &&
-                        <div className="footer">
+                {!submitSuccess 
+                    ? <>
+                        <form className={styles.formInput} action="" onSubmit={handleSubmitResetPassword}>
+                            <Input
+                                type="text"
+                                placeholder='New Password'
+                                value={newPassword}
+                                onChange={(e) => {
+                                    setNewPassword(e.target.value),
+                                    setMessageConfirm("")
+                                }}
+                            />
+                            <Input
+                                type="text"
+                                placeholder='Confirm New Password'
+                                value={confirmedNewPassword}
+                                onChange={(e) => {
+                                    setConfirmedNewPassword(e.target.value),
+                                    setMessageConfirm("")
+                                }}
+                            />
+                            <SubmitButton title="Confirm new password" disabled={!newPassword || !confirmedNewPassword}/>
+                            { loading && <LoadingBar /> }
+                            { messageConfirm && <span className={styles.messageFailed}>{messageConfirm}</span> }
+                            { messageFailed && <span className={styles.messageFailed}>{messageFailed}</span> }
+                            
+                        </form>
+                    </> 
+                    : <div className={styles.footer}>
                             <IconTick />
-                            { messageSuccess && <span className='message-success'>{messageSuccess}</span> }
-                            <button className="back-to-login">
-                                <Link className='back-to-login-link' to={"/login"}>&larr; Back to login page.</Link>
+                            { messageSuccess && <span className={styles.messageSuccess}>{messageSuccess}</span> }
+                            <button className={styles.backToLogin}>
+                                <Link className={styles.backToLoginLink} to={"/login"}>&larr; Back to login page.</Link>
                             </button>
-                        </div>
-                    }
-                </form>
+                    </div>
+                }
             </div>
         </div>
     )

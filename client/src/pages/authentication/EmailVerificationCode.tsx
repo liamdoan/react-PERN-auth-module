@@ -1,5 +1,5 @@
+import styles from "./EmailVerificationCode.module.css";
 import React, { useRef, useState } from 'react'
-import "./EmailVerificationCode.css"
 import { useNavigate } from 'react-router-dom';
 import SubmitButton from '../../components/auth-form-components/SubmitButton';
 import LoadingBar from '../../components/loading/LoadingBar';
@@ -63,11 +63,11 @@ const EmailVerificationCode = () => {
     };
 
     return (
-        <div className="container">
-            <div className="form-wrapper">
-                <h1 className="title">Enter verification code sent to your email</h1>
-                <form className="form-container" onSubmit={handleSubmitCode}>
-                    <div className="input-container">
+        <div className={styles.wrapper}>
+            <div className={styles.formContainer}>
+                <h1 className={styles.title}>Enter verification code sent to your email</h1>
+                <form className={styles.formWrapper} onSubmit={handleSubmitCode}>
+                    <div className={styles.inputWrapper}>
                         {code.map((digit, index) => (
                             <input
                                 key={index}
@@ -77,17 +77,17 @@ const EmailVerificationCode = () => {
                                 value={digit}
                                 onChange={(e) => handleInputChange(e.target.value, index)}
                                 onKeyDown={(e) => handleKeyDown(e, index)}
-                                className="input-field"
+                                className={styles.inputField}
                             />
                         ))}
                     </div>
                     <SubmitButton title="Send code" disabled={isButtonDisabled}/>
                     { loading && <LoadingBar /> }
-                    { messageSuccess && <span className='message-success'>{messageSuccess}</span> }
-                    { messageFailed && <span className='message-failed'>{messageFailed}</span> }
+                    { messageSuccess && <span className={styles.messageSuccess}>{messageSuccess}</span> }
+                    { messageFailed && <span className={styles.messageFailed}>{messageFailed}</span> }
                 </form>
             </div>
-            <p className="footer">
+            <p className={styles.footer}>
                 Should any issue arise, please contact us!
             </p>
         </div>

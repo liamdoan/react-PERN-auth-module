@@ -1,9 +1,9 @@
-import './LoadingBar.css';
+import styles from './LoadingBar.module.css';
 
 const LoadingBar = () => {
     return (
-        <div className="loading-bar-container">
-            <div className="loading-bar"></div>
+        <div className={styles.container}>
+            <div className={styles.loadingBar}></div>
         </div>
     );
 };

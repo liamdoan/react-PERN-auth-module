@@ -1,4 +1,4 @@
-import "./Input.css"
+import styles from "./Input.module.css"
 
 interface InputProps{
     type: string,
@@ -11,6 +11,7 @@ const Input: React.FC<InputProps> = ({type, placeholder, value, onChange}) => {
   return (
     <>
         <input
+            className={styles.input}
             type={type}
             placeholder={placeholder}
             value={value}

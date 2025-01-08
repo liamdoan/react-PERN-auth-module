@@ -1,4 +1,4 @@
-import './Login.css';
+import styles from './Login.module.css';
 import { useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Input from '../../components/auth-form-components/Input';
@@ -24,7 +24,7 @@ const Login = () => {
     const dispatch = useDispatch();
 
     if (isCheckingUserAuthenticated) {
-        return <div className="spinner-wrapper"><Spinner /></div>;
+        return <div className={styles.spinnerWrapper}><Spinner /></div>;
     }
 
     if (isUserAuthenticated) {
@@ -66,10 +66,10 @@ const Login = () => {
     };
 
     return (
-        <div className="login-wrapper">
-            <div className='login-form'>
+        <div className={styles.wrapper}>
+            <div className={styles.formWrapper}>
                 <h1>Log in</h1>
-                <form className='login-form-input' action="" onSubmit={handleLogin}>
+                <form className={styles.formInput} action="" onSubmit={handleLogin}>
                     <Input
                         type="email"
                         placeholder='Email'
@@ -84,14 +84,14 @@ const Login = () => {
                     />
                     <SubmitButton title="Log In"/>
                     { loading && <LoadingBar /> }
-                    { messageSuccess && <span className='message-success'>{messageSuccess}</span> }
-                    { messageFailed && <span className='message-failed'>{messageFailed}</span> }
-                    <div className='notice-forgot-password'>
-                        <span className='notice-span'>
+                    { messageSuccess && <span className={styles.messageSuccess}>{messageSuccess}</span> }
+                    { messageFailed && <span className={styles.messageFailed}>{messageFailed}</span> }
+                    <div className={styles.noticeForgotPassword}>
+                        <span className={styles.noticeSpan}>
                             Forgot your password?
                             <span>&nbsp;</span>
                         </span>
-                        <Link className='forgot-password-direct' to={"/forgot-password"}>Click here.</Link>
+                        <Link className={styles.forgotPasswordDirect} to={"/forgot-password"}>Click here.</Link>
                     </div>
                 </form>
             </div>

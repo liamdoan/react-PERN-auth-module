@@ -14,7 +14,7 @@ h2 {
     padding: 0;
 }
 
-.main-section {
+.mainSection {
     height: calc(100vh - 70px);
     background: #0a0a0a;
     display: flex;
@@ -23,8 +23,8 @@ h2 {
     align-items: center;
 }
 
-.login-button,
-.create-account-button {
+.loginButton,
+.createAccountButton {
     margin: 8px 0 8px 0;
     padding:10px;
     text-decoration: none;
@@ -37,16 +37,16 @@ h2 {
     border-radius: 40px;
     cursor: pointer;
 }
-.login-button {
+.loginButton {
     width: 100px;
     background-color: white;
 }
-.create-account-button {
+.createAccountButton {
     width: 200px;
     background-color: rgb(223, 182, 0);
     transition: background-color 0.2s ease-in-out;
 }
 
-.create-account-button:hover {
+.createAccountButton:hover {
     background-color: rgb(248, 203, 0);
 }

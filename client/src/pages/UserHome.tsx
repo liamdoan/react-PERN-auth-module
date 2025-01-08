@@ -1,4 +1,4 @@
-import "./UserHome.css";
+import styles from "./UserHome.module.css";
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../redux/store"
 import { Navigate } from "react-router-dom";
@@ -19,7 +19,7 @@ const UserHome = () => {
     const dispatch = useDispatch();
 
     if (isCheckingUserAuthenticated) {
-        return <div className="spinner-wrapper"><Spinner /></div>;
+        return <div className={styles.spinnerWrapper}><Spinner /></div>;
     }
 
     if (!isUserAuthenticated) {
@@ -45,22 +45,22 @@ const UserHome = () => {
     };
     
     return (
-        <div className="home-wrapper">
-            <div className="navbar">
-                <button className="logout-button" onClick={handleLogout}>Log Out</button>
+        <div className={styles.wrapper}>
+            <div className={styles.navbar}>
+                <button className={styles.logoutButton} onClick={handleLogout}>Log Out</button>
             </div>
-            <div className="main-section">
+            <div className={styles.mainSection}>
                 <h1>This is user homepage</h1>
-                <div className="info-wrapper">
-                    <div className="info-text">
+                <div className={styles.infoWrapper}>
+                    <div className={styles.infoText}>
                         <p>Hello: {user.name}</p>
                         <p>Your email is: {user.email}</p>
                         <p>You joined on: {new Date (user.createdAt).toLocaleString()}</p>
                         <p>You last logged in on: {user && new Date(user.lastLogin).toLocaleString()}</p>
                     </div>
                     { loading && <LoadingBar /> }
-                    { messageSuccess && <span className='message-success'>{messageSuccess}</span> }
-                    { messageFailed && <span className='message-failed'>{messageFailed}</span> }
+                    { messageSuccess && <span className={styles.messageSuccess}>{messageSuccess}</span> }
+                    { messageFailed && <span className={styles.messageFailed}>{messageFailed}</span> }
                 </div>
             </div>
         </div>

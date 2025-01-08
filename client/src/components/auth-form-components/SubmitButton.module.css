@@ -1,4 +1,4 @@
-button {
+.button {
     margin: 8px 0 8px 0;
     width: 90%;
     align-self: center;
@@ -11,11 +11,11 @@ button {
     transition: background-color 0.2s ease-in-out;
 }
 
-button:hover {
+.button:hover {
     background-color: rgb(248, 203, 0);
 }
 
-button:disabled{
+.button:disabled{
     cursor: not-allowed;
     background-color: gray;
 }

@@ -1,8 +1,8 @@
-import "./IconTick.css";
+import styles from "./IconTick.module.css";
 
 const IconTick = () => {
   return (
-    <div className="tick-icon">✓</div>
+    <div className={styles.tickIcon}>✓</div>
   )
 }
 

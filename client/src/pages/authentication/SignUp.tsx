@@ -1,6 +1,6 @@
+import styles from './SignUp.module.css';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './SignUp.css'
 import Input from '../../components/auth-form-components/Input';
 import SubmitButton from '../../components/auth-form-components/SubmitButton';
 import PasswordStrengthIndicator from '../../components/auth-form-components/PasswordStrengthIndicator';
@@ -49,10 +49,10 @@ const SignUp = () => {
     };
 
     return (
-        <div className="signup-wrapper">
-            <div className='signup-form'>
+        <div className={styles.wrapper}>
+            <div className={styles.form}>
                 <h1>Create your account</h1>
-                <form className='signup-form-input' action="" onSubmit={handleSignup}>
+                <form className={styles.input} action="" onSubmit={handleSignup}>
                     <Input
                         type="text"
                         placeholder='Full name'
@@ -74,14 +74,14 @@ const SignUp = () => {
                     <PasswordStrengthIndicator password={password}/>
                     <SubmitButton title="Sign Up" disabled={!name || !email || !password}/>
                     { loading && <LoadingBar /> }
-                    { messageSuccess && <span className='message-success'>{messageSuccess}</span> }
-                    { messageFailed && <span className='message-failed'>{messageFailed}</span> }
-                    <div className='notice-already-have-account'>
-                        <span className='notice-span'>
+                    { messageSuccess && <span className={styles.messageSuccess}>{messageSuccess}</span> }
+                    { messageFailed && <span className={styles.messageFailed}>{messageFailed}</span> }
+                    <div className={styles.noticeAlreadyHaveAccount}>
+                        <span className={styles.noticeSpan}>
                             Already have an account?
                             <span>&nbsp;</span>
                         </span>
-                        <Link className='login-direct' to={"/login"}>Please login.</Link>
+                        <Link className={styles.loginDirect} to={"/login"}>Please login.</Link>
                     </div>
                 </form>
             </div>

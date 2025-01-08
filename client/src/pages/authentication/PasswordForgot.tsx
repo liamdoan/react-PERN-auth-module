@@ -1,5 +1,5 @@
 
-import "./PasswordForgot.css"
+import styles from "./PasswordForgot.module.css";
 import SubmitButton from '../../components/auth-form-components/SubmitButton';
 import Input from '../../components/auth-form-components/Input';
 import LoadingBar from '../../components/loading/LoadingBar';
@@ -37,13 +37,15 @@ const PasswordForgot = () => {
     };
 
     return (
-        <div className="password-forgot-wrapper">
-            <div className='password-forgot-form'>
+        <div className={styles.wrapper}>
+            <div className={styles.formWrapper}>
                 <h1>Forgot Password</h1>
                 {!submitSuccess
                     ? <>
-                        <p className="password-forgot-notice">After entering your email, a link to reset your password will be sent to your provided email address.</p>
-                        <form className='password-forgot-form-input' action="" onSubmit={handleSubmitEmail}>
+                        <p className={styles.description}>
+                            After entering your email, a link to reset your password will be sent to your provided email address.
+                        </p>
+                        <form className={styles.formInput} action="" onSubmit={handleSubmitEmail}>
                             <Input
                                 type="email"
                                 placeholder='Email'
@@ -52,12 +54,12 @@ const PasswordForgot = () => {
                             />
                             <SubmitButton title="Send me reset password link" disabled={!email}/>
                             { loading && <LoadingBar /> }
-                            { messageFailed && <span className='message-failed'>{messageFailed}</span> }
+                            { messageFailed && <span className={styles.messageFailed}>{messageFailed}</span> }
                         </form>
                     </>
                     : <>
                         <IconTick />
-                        { messageSuccess && <span className='message-success'>{messageSuccess}</span> }
+                        { messageSuccess && <span className={styles.messageSuccess}>{messageSuccess}</span> }
                     </>
                 }
             </div>

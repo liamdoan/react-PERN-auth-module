@@ -1,18 +1,18 @@
-import "./GeneralHome.css";
+import styles from "./GeneralHome.module.css";
 import { Link } from 'react-router-dom';
 
 const GeneralHome = () => {
     return (
         <div>
-            <div className="navbar">
+            <div className={styles.navbar}>
                 <h2>MERN AUTH</h2>
-                <Link className="login-button" to={"/login"}>
+                <Link className={styles.loginButton} to={"/login"}>
                     Log in
                 </Link>
             </div>
-            <div className="main-section">
+            <div className={styles.mainSection}>
                 <h1>WELCOME TO MERN FULL AUTH MODEL</h1>
-                <Link className="create-account-button" to={"/sign-up"}>
+                <Link className={styles.createAccountButton} to={"/sign-up"}>
                     Create account
                 </Link>
             </div>
