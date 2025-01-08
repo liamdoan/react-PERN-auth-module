@@ -91,9 +91,7 @@ const PasswordReset = () => {
                     : <div className={styles.footer}>
                             <IconTick />
                             { messageSuccess && <span className={styles.messageSuccess}>{messageSuccess}</span> }
-                            <button className={styles.backToLogin}>
-                                <Link className={styles.backToLoginLink} to={"/login"}>&larr; Back to login page.</Link>
-                            </button>
+                            <Link className={styles.backToLogin} to={"/login"}>&larr; Back to login page</Link>
                     </div>
                 }
             </div>
