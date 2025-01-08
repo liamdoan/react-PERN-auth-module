@@ -6,15 +6,15 @@ const GeneralHome = () => {
         <div>
             <div className="navbar">
                 <h2>MERN AUTH</h2>
-                <div className="login-button">
-                    <Link className="navigate-link" to={"/login"}>Log in</Link>
-                </div>
+                <Link className="login-button" to={"/login"}>
+                    Log in
+                </Link>
             </div>
             <div className="main-section">
                 <h1>WELCOME TO MERN FULL AUTH MODEL</h1>
-                <div className="create-account-button">
-                    <Link className="navigate-link" to={"/sign-up"}>Create account</Link>
-                </div>
+                <Link className="create-account-button" to={"/sign-up"}>
+                    Create account
+                </Link>
             </div>
         </div>
     )
