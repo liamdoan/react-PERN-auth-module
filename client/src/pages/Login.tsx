@@ -1,12 +1,14 @@
+import './Login.css';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import './Login.css'
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Input from '../components/auth-form-components/Input';
 import SubmitButton from '../components/auth-form-components/SubmitButton';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginFailed, loginStart, loginSuccessful } from '../redux/slices/userSlice';
-import LoadingBar from '../components/loading/LoadingBar';
+import { RootState } from '../redux/store';
 import { userLogin } from '../utils/authApiCalls';
+import LoadingBar from '../components/loading/LoadingBar';
+import Spinner from '../components/loading/Spinner';
 
 const Login = () => {
     const [email, setEmail] = useState<string>("");
@@ -16,8 +18,18 @@ const Login = () => {
     const [messageSuccess, setMessageSuccess] = useState<string>("");
     const [messageFailed, setMessageFailed] = useState<string>("");
 
+    const isCheckingUserAuthenticated = useSelector((state: RootState) => state.user.isCheckingUserAuthenticated);
+    const isUserAuthenticated = useSelector((state: RootState) => state.user.isUserAuthenticated);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    if (isCheckingUserAuthenticated) {
+        return <div className="spinner-wrapper"><Spinner /></div>;
+    }
+
+    if (isUserAuthenticated) {
+        return <Navigate to="/home" />;
+    }
 
     const resetForm = () => {
         setEmail('');
