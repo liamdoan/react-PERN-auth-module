@@ -42,10 +42,10 @@ function App() {
         checkUserAuthenticated();
     }, [])
 
-    // useEffect(() => {
-    //     console.log('User:', user);
-    //     console.log('Is Authenticated:', isUserAuthenticated);
-    // }, [user]);
+    useEffect(() => {
+        // console.log('User:', user);
+        console.log('Is Authenticated:', isUserAuthenticated);
+    }, [user]);
 
     return (
         <div>
