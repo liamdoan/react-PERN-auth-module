@@ -1,8 +1,8 @@
 import styles from './Login.module.css';
 import { useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import Input from '../../components/auth-form-components/Input';
-import SubmitButton from '../../components/auth-form-components/SubmitButton';
+import Input from '../../components/auth-model/auth-form-components/Input';
+import SubmitButton from '../../components/auth-model/auth-form-components/SubmitButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginFailed, loginStart, loginSuccessful } from '../../redux/slices/userSlice';
 import { RootState } from '../../redux/store';
@@ -46,8 +46,8 @@ const Login = () => {
             const response = await userLogin(email, password);
 
             if (response.data.user) {
-                const {name, email, createdAt, lastLogin} = response.data.user;
-                dispatch(loginSuccessful({name, email, createdAt, lastLogin}));
+                const {_id, name, email, roles, createdAt, lastLogin} = response.data.user;
+                dispatch(loginSuccessful({_id, name, email, roles, createdAt, lastLogin}));
             };
 
             setLoading(false);
