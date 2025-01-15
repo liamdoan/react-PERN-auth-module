@@ -7,71 +7,19 @@
 
 .wrapper {
     background: #0a0a0a;
-    height: 100vh
-}
-
-.navbar {
+    height: 100vh;
     padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-    gap: 10px;
 }
 
-button {
-    width: 100px;
-    padding:10px;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.logoutButton,
-.deleteButton {
-    background-color: rgb(168, 0, 0);
+.userInfo {
+    padding: 10px 5px;
+    font-style: italic;
     color: white;
-    transition: background-color 0.2s ease-in-out;
-}
-.logoutButton:hover,
-.deleteButton:hover {
-    background-color: rgb(197, 0, 0);
-}
-.roleButton,
-.editInfoButton {
-    background-color: rgb(223, 182, 0);
-    transition: background-color 0.2s ease-in-out;
-}
-.roleButton:hover,
-.editInfoButton:hover {
-    background-color: rgb(248, 203, 0);
 }
 
 .mainSection {
+    padding: 2rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-}
-
-.infoWrapper {
-    display: flex;
-    flex-direction: column;
-    background-color: #2d2d2d;
-    padding: 2rem;
-    border-radius: 10px;
-    color: white;
-}
-
-.messageSuccess,
-.messageFailed {
-    text-align: center;
-    font-style: italic;
-    margin: 5px 0;
-}
-.messageSuccess {
-    color: greenyellow;
-}
-.messageFailed {
-    color: red;
 }
