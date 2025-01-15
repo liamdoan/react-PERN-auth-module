@@ -1,0 +1,21 @@
+.button {
+    margin: 8px 0 8px 0;
+    width: 90%;
+    align-self: center;
+    padding:10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgb(223, 182, 0);
+    transition: background-color 0.2s ease-in-out;
+}
+
+.button:hover {
+    background-color: rgb(248, 203, 0);
+}
+
+.button:disabled{
+    cursor: not-allowed;
+    background-color: gray;
+}
