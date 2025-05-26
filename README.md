@@ -1,6 +1,6 @@
 ## Description
 
-Full authentication module with React-Nodejs-Espress-MongoDB, redux. (screenshot can be seen in this [integration](https://github.com/liamdoan/MERN-auth-SPA))
+Full authentication module with React-Nodejs-Espress-MongoDB, redux and OAuth 2.0 protocol. (screenshot can be seen in this [integration](https://github.com/liamdoan/MERN-auth-SPA))
 
 The focus is onto the infrastructure and file management, which aims to facilitate the `expanding` and `integration to other projects`.
 
@@ -34,6 +34,10 @@ Backend:
 Database:
 
 - MongoDB
+
+Authorization protocol:
+
+- OAuth 2.0
 
 Further expansion: integrate with other MERN projects.
 
