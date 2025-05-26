@@ -10,7 +10,7 @@ dotenv.config();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: process.env.DEVELOPMENT_CLIENT_URL,
     credentials: true
 }));
 app.use(express.json());
@@ -20,9 +20,15 @@ const authRoutes = require("./routes/auth.js")
 
 app.use('/api/auth', authRoutes);
 
-app.listen(PORT, () => {
-    connectMongo();
-    console.log(`Server is running on port ${PORT}`)
-})
+const startServer = async () => {
+    try {
+        await connectMongo();
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`);
+        });
+    } catch (err) {
+        console.error("Failed to connect to MongoDB. Server not started.");
+    }
+};
 
-
+startServer();
