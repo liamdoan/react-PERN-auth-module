@@ -1,8 +1,9 @@
 const cors = require('cors');
 
 const express = require('express');
-const connectMongo = require('./database/connectMongo.js');
 const cookieParser = require('cookie-parser');
+const {PrismaClient} = require('@prisma/client');
+const prisma = new PrismaClient;
 
 const app = express();
 const dotenv = require('dotenv');
@@ -27,12 +28,13 @@ app.use('/api/auth', authRoutes);
 
 const startServer = async () => {
     try {
-        await connectMongo();
+        await prisma.$queryRaw`SELECT 1`;
         app.listen(PORT, () => {
-            console.log(`Server is running on port ${PORT}`);
+            console.log(`Server PostGre is running on port ${PORT}`);
         });
     } catch (err) {
-        console.error("Failed to connect to MongoDB. Server not started.");
+        console.error("Failed to connect to PostGre. Server not started.");
+        console.log(err);
     }
 };
 
