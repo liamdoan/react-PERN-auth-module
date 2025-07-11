@@ -1,8 +1,13 @@
-const userModel = require("../../database/models/userModel")
+const {PrismaClient} = require('@prisma/client');
+const prisma = new PrismaClient();
 
 module.exports.checkAuth = async (req, res) => {
     try {
-        const user = await userModel.findById(req.userId);
+        const user = await prisma.user.findUnique({
+            where: {
+                id: req.userId
+            }
+        });
 
         if (!user) {
             return res.status(400).json({
@@ -12,9 +17,7 @@ module.exports.checkAuth = async (req, res) => {
 
         res.status(200).json({
             message: "User found!",
-            user: {
-                ...user._doc
-            }
+            user
         })
     } catch (error) {
         console.error(error);

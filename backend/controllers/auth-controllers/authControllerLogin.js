@@ -1,12 +1,15 @@
-const userModel = require("../../database/models/userModel");
 const bcryptjs = require('bcryptjs');
 const { generateTokenAndSetCookies } = require("../../utils/generateTokenAndSetCookies");
+const {PrismaClient} = require('@prisma/client');
+const prisma = new PrismaClient();
 
 module.exports.logIn = async (req, res) => {
     const {email, password} = req.body;
 
     try {
-        const user = await userModel.findOne({email});
+        const user = await prisma.user.findUnique({
+            where: {email}
+        });
 
         if(!user) {
             return res.status(400).json({
@@ -27,15 +30,20 @@ module.exports.logIn = async (req, res) => {
             })
         };
 
-        generateTokenAndSetCookies(res, user._id);
+        generateTokenAndSetCookies(res, user.id);
 
-        user.lastLogin = Date.now();
-
-        await user.save();
+        await prisma.user.update({
+            where: {
+                id: user.id
+            },
+            data: {
+                lastLogin: new Date()
+            }
+        })
 
         res.status(200).json({
             message: "Login ok!",
-            user:{... user._doc}
+            user
         });
     } catch (error) {
         console.log("Login error: ", error);

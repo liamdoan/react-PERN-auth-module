@@ -1,11 +1,14 @@
 const { sendPasswordResetEmail } = require("../../mailtrap/emailServices");
-const userModel = require("../../database/models/userModel");
 const { generateResetToken } = require("../../utils/generateResetToken");
+const {PrismaClient} = require('@prisma/client');
+const prisma = new PrismaClient();
 
 module.exports.forgotPassword = async (req, res) => {
     const {email} = req.body;
     try {
-        const user = await userModel.findOne({email});
+        const user = await prisma.user.findUnique({
+            where: {email}
+        });
 
         if (!user) {
             return res.status(400).json({
@@ -14,12 +17,17 @@ module.exports.forgotPassword = async (req, res) => {
         };
 
         const resetToken = generateResetToken();
-        const resetTokenExpiredTime = Date.now() + 1*60*60*1000; // 1 hour
+        const resetTokenExpiredTime = new Date(Date.now() + 1*60*60*1000); // 1 hour
 
-        user.resetPasswordToken = resetToken;
-        user.resetPasswordExpiresAt = resetTokenExpiredTime;
-
-        await user.save();
+        await prisma.user.update({
+            where: {
+                id: user.id
+            },
+            data: {
+                resetPasswordToken: resetToken,
+                resetPasswordExpiresAt: resetTokenExpiredTime
+            }
+        });
 
         await sendPasswordResetEmail(user.email, `${process.env.DEVELOPMENT_CLIENT_URL}/reset-password/${resetToken}`);
 

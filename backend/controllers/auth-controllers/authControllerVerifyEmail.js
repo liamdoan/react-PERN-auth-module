@@ -1,13 +1,15 @@
 const { sendWelcomeEmail } = require("../../mailtrap/emailServices");
-const userModel = require("../../database/models/userModel");
+const {PrismaClient} = require('@prisma/client');
+const prisma = new PrismaClient();
 
 module.exports.verifyEmail = async (req, res) => {
     const {verificationCode} = req.body;
     
     try {
-        const user = await userModel.findOne({
-            verificationToken: verificationCode,
-            verificationTokenExpiresAt: {$gt: Date.now()}
+        const user = await prisma.user.findUnique({
+            where: {
+                verificationToken: verificationCode
+            }
         })
 
         if(!user) {
@@ -16,17 +18,22 @@ module.exports.verifyEmail = async (req, res) => {
             })
         }
 
-        user.isVerified = true;
-        user.verificationToken = undefined;
-        user.verificationTokenExpiresAt = undefined;
+        const updatedUser = await prisma.user.update({
+            where: {
+                id: user.id
+            },
+            data: {
+                isVerified: true,
+                verificationToken: null,
+                verificationTokenExpiresAt: null
+            }
+        })
 
-        await user.save();
-
-        await sendWelcomeEmail(user.email, user.name);
+        await sendWelcomeEmail(updatedUser.email, updatedUser.name);
 
         res.status(200).json({
             message: "verification code ok!",
-            user: user._doc
+            user: updatedUser
         })
     } catch (error) {
         res.status(500).json({
