@@ -1,11 +1,16 @@
-const userModel = require("../../../database/models/userModel");
+const {PrismaClient} = require('@prisma/client');
+const prisma = new PrismaClient();
 
 module.exports.updateUserInfo = async (req, res) => {
     const {userId} = req.params
     const {name, email} = req.body;
 
     try {
-        const user = await userModel.findById(userId);
+        const user = await prisma.user.findUnique({
+            where: {
+                id: userId
+            }
+        });
 
         if (!user) {
             return res.status(403).json({
@@ -13,8 +18,10 @@ module.exports.updateUserInfo = async (req, res) => {
             })
         };
 
+        let updateData = {}; // will contain only values that are updated, simplify validating steps 
+
         if (name) {
-            user.name = name;
+            updateData.name = name;
         };
 
         // if updated email is the same as current email, skip this block
@@ -27,24 +34,29 @@ module.exports.updateUserInfo = async (req, res) => {
                 })
             };
 
-            const existedUser = await userModel.findOne({email});
+            const existedUser = await prisma.user.findUnique({
+                where: {email}
+            });
 
-            if (existedUser && (existedUser._id.toString() !== user._id.toString())) {
+            if (existedUser && (existedUser.id.toString() !== user.id.toString())) {
                 return res.status(400).json({
                     message: "Email has already existed!"
                 })
             };
 
-            user.email = email;
+            updateData.email = email;
         }
 
-        await user.save();
+        const updatedUser = await prisma.user.update({
+            where: {
+                id: userId
+            },
+            data: updateData
+        })
 
         res.status(200).json({
             message: "Info updated ok!",
-            user: {
-                ...user._doc
-            }
+            user: updatedUser
         });
     } catch (error) {
         console.error(error);
