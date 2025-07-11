@@ -1,8 +1,22 @@
-const userModel = require("../database/models/userModel");
+const {PrismaClient} = require('@prisma/client');
+const prisma = new PrismaClient();
 
 module.exports.verifyAdminOrManagerRole = async (req, res, next) => {
+    const loggedInUser = req.userId // from verifyToken middleware
+
     try {
-        const user = await userModel.findById(req.userId);
+        const user = await prisma.user.findUnique({
+            where: {
+                id: loggedInUser
+            },
+            include: {
+                roles: {
+                    include: {
+                        role: true
+                    }
+                }
+            }
+        });
 
         if (!user) {
             return res.status(403).json({
@@ -10,7 +24,10 @@ module.exports.verifyAdminOrManagerRole = async (req, res, next) => {
             });
         }
 
-        if (user.roles.includes("admin") || user.roles.includes("manager")) {
+        if (user.roles.some(userRole => 
+            userRole.role.name === 'admin' ||
+            userRole.role.name === 'manager'
+        )) {
             return next();
         }
 
