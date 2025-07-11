@@ -25,7 +25,7 @@ model User {
   resetPasswordToken            String?
   resetPasswordExpiresAt        DateTime?
   verificationToken             String?
-  verificationTokenExpriesAt    DateTime?
+  verificationTokenExpiresAt    DateTime?
   createdAt                     DateTime              @default(now())
   updatedAt                     DateTime              @updatedAt 
 }
