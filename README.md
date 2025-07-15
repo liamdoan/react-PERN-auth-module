@@ -1,3 +1,5 @@
+Translattion from [MERN Auth Model](https://github.com/liamdoan/MERN-auth-SPA) to PERN + Prisma ORM model
+
 ## Description
 
 Full authentication module with React-Nodejs-Espress-MongoDB, redux and OAuth 2.0 protocol. (screenshot can be seen in this [integration](https://github.com/liamdoan/MERN-auth-SPA))
